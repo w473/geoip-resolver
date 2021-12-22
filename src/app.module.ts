@@ -6,6 +6,7 @@ import { HealthController } from './handler/controllers/health.controller';
 import { GeoipController } from 'src/handler/controllers/geoip.controller';
 import { LoggerMiddleware } from 'src/infrastructure/middlewares/logger.middleware';
 import {
+  AuthenticationMiddleware,
   AUTHORIZATION_HEADER_NAME,
   RolesGuard,
 } from 'nestjs-keycloak-authorize';
@@ -49,5 +50,6 @@ import { ConfigService } from '@nestjs/config';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('*');
+    consumer.apply(AuthenticationMiddleware).forRoutes('*');
   }
 }
