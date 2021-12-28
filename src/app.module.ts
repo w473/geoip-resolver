@@ -50,6 +50,6 @@ import { ConfigService } from '@nestjs/config';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('*');
-    consumer.apply(AuthenticationMiddleware).forRoutes('*');
+    consumer.apply(AuthenticationMiddleware).exclude('/health').forRoutes('*');
   }
 }

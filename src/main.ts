@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ErrorsInterceptor } from './handler/interceptors/errors.interceptor';
 import { MainModule } from 'src/main.module';
 
 async function bootstrap() {
@@ -13,7 +12,6 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  app.useGlobalInterceptors(new ErrorsInterceptor());
   app.enableCors();
 
   const config = new DocumentBuilder()

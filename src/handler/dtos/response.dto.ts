@@ -7,6 +7,7 @@ import { LocationResponseDto } from 'src/handler/dtos/location-response.dto';
 import { PostalResponseDto } from 'src/handler/dtos/postal-response.dto';
 import { SubdivisionResponseDto } from 'src/handler/dtos/subdivision-response.dto';
 import { TraitsResponseDto } from 'src/handler/dtos/traits-response.dto';
+import { RepresentedCountryResponseDto } from 'src/handler/dtos/represented-country-response.dto';
 
 export class ResponseDto {
   @ApiModelPropertyOptional()
@@ -28,7 +29,7 @@ export class ResponseDto {
   registered_country?: RegisteredCountryResponseDto;
 
   @ApiModelPropertyOptional()
-  represented_country?: RegisteredCountryResponseDto;
+  represented_country?: RepresentedCountryResponseDto;
 
   @ApiModelPropertyOptional({ type: SubdivisionResponseDto, isArray: true })
   subdivisions?: SubdivisionResponseDto[];
