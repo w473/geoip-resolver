@@ -3,14 +3,14 @@ import * as Request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { ConfigModule } from '@nestjs/config';
 import { AppModule } from 'src/app.module';
-import { DEFAULT_AUTHORIZATION_HEADER } from 'src/statics';
 import {
-  tokenAdminRole,
-  tokenNoRole,
-  tokenSysRole,
-} from '../../../__mockdata__/jwt.tokens';
+  DEFAULT_AUTHORIZATION_HEADER,
+  GEOIP_CLIENT_INTERFACE,
+} from 'src/statics';
+import { tokenNoRole, tokenSysRole } from '../../../__mockdata__/jwt.tokens';
 import { GeoIPService } from 'src/application/services/geoip.service';
-import { CityResponse } from 'mmdb-lib/lib/reader/response';
+import { mock } from 'jest-mock-extended';
+import { GeoIPResponseDto } from 'src/handler/dtos/geoip-response.dto';
 
 describe('GeoipController', () => {
   const basicPath = '/api/v1/geoip';
@@ -18,6 +18,7 @@ describe('GeoipController', () => {
   let request: Request.SuperTest<Request.Test>;
   const geoIPServiceMock = {
     getByIP: jest.fn(),
+    boot: jest.fn(),
   };
 
   beforeAll(async () => {
@@ -30,6 +31,8 @@ describe('GeoipController', () => {
       ],
     });
     const moduleRef = await testingModule
+      .overrideProvider(GEOIP_CLIENT_INTERFACE)
+      .useValue(mock())
       .overrideProvider(GeoIPService)
       .useValue(geoIPServiceMock)
       .compile();
@@ -46,9 +49,9 @@ describe('GeoipController', () => {
     await app.close();
   });
 
-  it(`/GET geoip/raw no token - forbidden`, () => {
+  it(`/GET geoip no token - forbidden`, () => {
     return request
-      .get(basicPath + '/192.168.1.1/raw')
+      .get(basicPath + '/192.168.1.1')
       .expect(401)
       .expect({
         statusCode: 401,
@@ -58,7 +61,7 @@ describe('GeoipController', () => {
 
   it(`/GET emails no proper roles`, () => {
     return request
-      .get(basicPath + '/192.168.1.1/raw')
+      .get(basicPath + '/192.168.1.1')
       .set(DEFAULT_AUTHORIZATION_HEADER, tokenNoRole)
       .expect(403)
       .expect({
@@ -69,9 +72,9 @@ describe('GeoipController', () => {
   });
 
   it(`/GET geoip`, () => {
-    const cityResponse: CityResponse = {
+    const cityResponse: GeoIPResponseDto = {
       city: {
-        geoname_id: 666,
+        geoNameId: 666,
         names: {
           en: 'potato',
         },
@@ -80,7 +83,7 @@ describe('GeoipController', () => {
     geoIPServiceMock.getByIP = jest.fn().mockReturnValue(cityResponse);
 
     return request
-      .get(basicPath + '/192.168.1.1/raw')
+      .get(basicPath + '/192.168.1.1')
       .set(DEFAULT_AUTHORIZATION_HEADER, tokenSysRole)
       .expect(200)
       .expect(cityResponse);

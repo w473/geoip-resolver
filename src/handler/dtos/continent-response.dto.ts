@@ -12,7 +12,7 @@ export enum ContinentCode {
 }
 export class ContinentResponseDto {
   @ApiModelProperty()
-  geoname_id: number;
+  geoNameId: number;
 
   @ApiModelProperty({ enum: Object.keys(ContinentCode) })
   readonly code: ContinentCode;

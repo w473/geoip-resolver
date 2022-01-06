@@ -4,6 +4,8 @@ import * as Request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { ConfigModule } from '@nestjs/config';
 import { AppModule } from 'src/app.module';
+import { GEOIP_CLIENT_INTERFACE } from 'src/statics';
+import { mock } from 'jest-mock-extended';
 
 describe('HEALTH', () => {
   let app: INestApplication;
@@ -19,6 +21,8 @@ describe('HEALTH', () => {
       ],
     });
     const moduleRef = await testingModule
+      .overrideProvider(GEOIP_CLIENT_INTERFACE)
+      .useValue(mock())
       .overrideProvider(TypeOrmHealthIndicator)
       .useValue({ pingCheck: () => null })
       .compile();
