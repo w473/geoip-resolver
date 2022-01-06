@@ -4,19 +4,19 @@ import {
 } from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
 import { RegisteredCountryResponseDto } from 'src/handler/dtos/registered-country-response.dto';
 
-export class LocationResponseDto extends RegisteredCountryResponseDto {
+export class LocationResponseDto {
   @ApiModelProperty()
-  readonly accuracy_radius: number;
+  readonly accuracyRadius: number;
   @ApiModelPropertyOptional()
-  readonly average_income?: number;
+  readonly averageIncome?: number;
   @ApiModelProperty()
   readonly latitude: number;
   @ApiModelProperty()
   readonly longitude: number;
   @ApiModelPropertyOptional()
-  readonly metro_code?: number;
+  readonly metroCode?: number;
   @ApiModelPropertyOptional()
-  readonly population_density?: number;
+  readonly populationDensity?: number;
   @ApiModelPropertyOptional()
-  readonly time_zone?: string;
+  readonly timeZone?: string;
 }

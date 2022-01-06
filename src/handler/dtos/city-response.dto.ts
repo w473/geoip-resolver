@@ -3,7 +3,7 @@ import { NamesResponseDto } from 'src/handler/dtos/names-response.dto';
 
 export class CityResponseDto {
   @ApiModelProperty()
-  geoname_id: number;
+  geoNameId: number;
 
   @ApiModelProperty()
   readonly confidence?: number;

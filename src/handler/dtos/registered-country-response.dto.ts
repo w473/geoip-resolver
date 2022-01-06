@@ -3,13 +3,13 @@ import { NamesResponseDto } from 'src/handler/dtos/names-response.dto';
 
 export class RegisteredCountryResponseDto {
   @ApiModelProperty()
-  geoname_id: number;
+  geoNameId: number;
 
   @ApiModelProperty()
-  readonly is_in_european_union: boolean;
+  readonly isInEuropeanUnion: boolean;
 
   @ApiModelProperty()
-  readonly iso_code: string;
+  readonly isoCode: string;
 
   @ApiModelProperty()
   readonly names: NamesResponseDto;

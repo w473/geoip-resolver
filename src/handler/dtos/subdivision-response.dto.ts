@@ -9,9 +9,9 @@ export class SubdivisionResponseDto {
   @ApiModelPropertyOptional()
   readonly confidence?: number;
   @ApiModelProperty()
-  readonly geoname_id: number;
+  readonly geoNameId: number;
   @ApiModelProperty()
-  readonly iso_code: string;
+  readonly isoCode: string;
   @ApiModelProperty()
   readonly names: NamesResponseDto;
 }
