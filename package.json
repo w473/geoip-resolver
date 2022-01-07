@@ -1,7 +1,7 @@
 {
-  "name": "geoip",
+  "name": "geoip-resoler",
   "version": "0.0.1",
-  "description": "GEOIP Service",
+  "description": "GEOIP Resolver",
   "author": "Jacek Głogosz",
   "private": false,
   "license": "APACHE 2.0",
