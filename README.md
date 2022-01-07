@@ -1,4 +1,4 @@
-# geoip-service
+# geoip resolver
 Simple service to serve GEOIP data based on GEOLITE by MAXMIND
 
 ation
@@ -31,15 +31,15 @@ $ npm run test:cov
 ```
 
 ## Docker images:
-ghcr.io/w473/geoip-service:latest
+ghcr.io/w473/geoip-resolver:latest
 
 and
 
-ghcr.io/w473/geoip-service:TAG
+ghcr.io/w473/geoip-resolver:TAG
 
 e.g.
 
-ghcr.io/w473/geoip-service:0.0.1
+ghcr.io/w473/geoip-resolver:0.0.1
 
 ## SECURITY
 Microservice is designed to work in Kubernetes cluster
