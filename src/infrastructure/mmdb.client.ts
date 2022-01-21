@@ -2,7 +2,7 @@ import maxmind, { Reader } from 'maxmind';
 import { CityResponse } from 'mmdb-lib/lib/reader/response';
 import { Inject, Injectable } from '@nestjs/common';
 import { MMDB_FILE_PATH, MMDB_LICENSE_KEY } from 'src/statics';
-import { readdirSync, renameSync } from 'fs';
+import { copyFileSync, readdirSync, renameSync } from 'fs';
 import { GeoipClientInterface } from 'src/domain/geoip.client';
 import { GeoIPResponseDto } from 'src/handler/dtos/geoip-response.dto';
 import { FileDownloadClient } from 'src/infrastructure/file-download.client';
@@ -117,7 +117,7 @@ export class MmdbClient implements GeoipClientInterface {
       }
     });
 
-    renameSync(
+    copyFileSync(
       `${tmpDir}/${dir.reverse()[0].name}/GeoLite2-City.mmdb`,
       this.mmdbFile,
     );

@@ -6,11 +6,6 @@ import { HealthController } from './handler/controllers/health.controller';
 import { GeoipController } from 'src/handler/controllers/geoip.controller';
 import { LoggerMiddleware } from 'src/infrastructure/middlewares/logger.middleware';
 import {
-  AuthenticationMiddleware,
-  AUTHORIZATION_HEADER_NAME,
-  RolesGuard,
-} from 'nestjs-keycloak-authorize';
-import {
   DEFAULT_AUTHORIZATION_HEADER,
   GEOIP_CLIENT_INTERFACE,
   MMDB_FILE_PATH,
@@ -21,6 +16,13 @@ import { ConfigService } from '@nestjs/config';
 import { BootstrapService } from 'src/application/services/bootstrap.service';
 import { MmdbClient } from 'src/infrastructure/mmdb.client';
 import { FileDownloadClient } from 'src/infrastructure/file-download.client';
+import {
+  AuthenticationMiddleware,
+  AUTHORIZATION_HEADER_NAME,
+  RolesGuard,
+  TOKEN_PARSER_INTERFACE,
+} from 'nestjs-jwt-authorize/lib/src';
+import { TokenParser } from 'src/handler/controllers/auth/token.parser';
 
 @Module({
   imports: [TerminusModule, HttpModule],
@@ -47,6 +49,10 @@ import { FileDownloadClient } from 'src/infrastructure/file-download.client';
     {
       provide: AUTHORIZATION_HEADER_NAME,
       useValue: DEFAULT_AUTHORIZATION_HEADER,
+    },
+    {
+      provide: TOKEN_PARSER_INTERFACE,
+      useClass: TokenParser,
     },
     {
       provide: APP_GUARD,

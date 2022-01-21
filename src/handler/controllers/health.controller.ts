@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
 import { ApiTags } from '@nestjs/swagger';
-import { IsPublic } from 'nestjs-keycloak-authorize/lib/decorators/is-public.decorator';
+import { IsPublic } from 'nestjs-jwt-authorize/lib/src';
 
 @ApiTags('health')
 @Controller('health')
