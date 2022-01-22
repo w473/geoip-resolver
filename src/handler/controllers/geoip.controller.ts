@@ -4,7 +4,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { GeoIPService } from 'src/application/services/geoip.service';
 import { IpDto } from 'src/handler/dtos/ip.dto';
 import { GeoIPResponseDto } from 'src/handler/dtos/geoip-response.dto';
-import { HasRole } from 'nestjs-jwt-authorize/lib/src';
+import { HasRole } from 'nestjs-jwt-authorize';
 
 @Controller('api/v1/geoip')
 @ApiTags('geoip')

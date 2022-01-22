@@ -21,7 +21,7 @@ import {
   AUTHORIZATION_HEADER_NAME,
   RolesGuard,
   TOKEN_PARSER_INTERFACE,
-} from 'nestjs-jwt-authorize/lib/src';
+} from 'nestjs-jwt-authorize';
 import { TokenParser } from 'src/handler/controllers/auth/token.parser';
 
 @Module({
@@ -48,7 +48,7 @@ import { TokenParser } from 'src/handler/controllers/auth/token.parser';
     },
     {
       provide: AUTHORIZATION_HEADER_NAME,
-      useValue: 'authorization',
+      useValue: DEFAULT_AUTHORIZATION_HEADER,
     },
     {
       provide: TOKEN_PARSER_INTERFACE,

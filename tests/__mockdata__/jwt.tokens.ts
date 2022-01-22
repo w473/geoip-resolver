@@ -1,5 +1,4 @@
-export const tokenAdminRole =
-  'eyJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiQURNSU4iXX19';
-export const tokenSysRole = 'eyJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiU1lTIl19fQ';
+export const tokenSysRole =
+  'eyJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uIjp7InRyYWl0cyI6eyJyb2xlIjoiU1lTIn19fQ.6mfzv0jOyC3R2JA-xp74QshV1YrIzmsFHFC3Q_FXNzY';
 export const tokenNoRole =
-  'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ';
+  'a.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ';
