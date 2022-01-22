@@ -1,10 +1,10 @@
 import { Controller, Get, Param } from '@nestjs/common';
 
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { HasRole } from 'nestjs-keycloak-authorize';
 import { GeoIPService } from 'src/application/services/geoip.service';
 import { IpDto } from 'src/handler/dtos/ip.dto';
 import { GeoIPResponseDto } from 'src/handler/dtos/geoip-response.dto';
+import { HasRole } from 'nestjs-jwt-authorize';
 
 @Controller('api/v1/geoip')
 @ApiTags('geoip')
