@@ -48,7 +48,7 @@ import { TokenParser } from 'src/handler/controllers/auth/token.parser';
     },
     {
       provide: AUTHORIZATION_HEADER_NAME,
-      useValue: DEFAULT_AUTHORIZATION_HEADER,
+      useValue: 'authorization',
     },
     {
       provide: TOKEN_PARSER_INTERFACE,
