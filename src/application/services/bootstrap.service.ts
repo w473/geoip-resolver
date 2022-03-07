@@ -18,11 +18,7 @@ export class BootstrapService implements OnApplicationBootstrap {
 
   async onApplicationBootstrap(): Promise<void> {
     this.logger.log('GEOIP BOOT START');
-    try {
-      await this.geoipClient.boot();
-    } catch (error) {
-      console.log(error);
-    }
+    await this.geoipClient.boot();
     this.logger.log('GEOIP BOOT FINISHED');
   }
 }
