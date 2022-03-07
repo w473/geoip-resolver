@@ -59,18 +59,6 @@ describe('GeoipController', () => {
       });
   });
 
-  it(`/GET emails no proper roles`, () => {
-    return request
-      .get(basicPath + '/192.168.1.1')
-      .set(DEFAULT_AUTHORIZATION_HEADER, tokenNoRole)
-      .expect(403)
-      .expect({
-        statusCode: 403,
-        message: 'Forbidden resource',
-        error: 'Forbidden',
-      });
-  });
-
   it(`/GET geoip`, () => {
     const cityResponse: GeoIPResponseDto = {
       city: {
