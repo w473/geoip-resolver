@@ -10,7 +10,6 @@ export class HealthController {
 
   @Get()
   @HealthCheck()
-  @IsPublic()
   check() {
     return this.health.check([]);
   }

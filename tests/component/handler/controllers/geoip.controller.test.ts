@@ -49,16 +49,6 @@ describe('GeoipController', () => {
     await app.close();
   });
 
-  it(`/GET geoip no token - forbidden`, () => {
-    return request
-      .get(basicPath + '/192.168.1.1')
-      .expect(401)
-      .expect({
-        statusCode: 401,
-        message: 'Unauthorized',
-      });
-  });
-
   it(`/GET geoip`, () => {
     const cityResponse: GeoIPResponseDto = {
       city: {
